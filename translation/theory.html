@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="" name="description">
+<meta content="" name="author">
+
+<meta name="experiment-short-name" content="decoder-demultiplexer-encoder">
+<meta name="developer-institute" content="IITR">
+<meta name="learning-unit" content="IMPLEMENTATION AND VERIFICATION OF DECODER/DE-MULTIPLEXER AND ENCODER USING
+LOGIC GATES.">
+<meta name="task-name" content="Theory">
+
+<!-- For iPhone -->
+<meta name="msapplication-TileColor" content="#4076e0">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#4076e0">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#4076e0">
+<title>वर्चुअल लैब्स</title>
+<link rel="shortcut icon" href="./assets/images/favicon.ico">
+<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg==" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=Raleway&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./assets/css/github-markdown.min.css">
+<link rel="stylesheet" href="./assets/css/vlabs-style.css">
+
+<script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+<style>
+h1 {
+font-size: 1.8rem;
+}
+h2 {
+font-size: 1.4rem;
+}
+h3 {
+font-size: 1.2rem;
+}
+
+h2, h3 {
+font-weight: 800;
+}
+</style>
+</head>
+<body class="p-0 container-fluid vlabs-page d-flex flex-column justify-content-between">
+
+<header class="vlabs-header sticky-top bg-white">
+<nav class="p-0 navbar navbar-light d-flex align-items-stretch">
+
+<button class="navbar-toggler px-4" type="button" onclick="toggle()">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="d-flex justify-content-center">
+<a href="https://vlab.co.in" class="navbar-brand">
+<img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+</a>
+</div>
+
+<div id="headerNavbar" class="d-none border-top flex-grow-1 d-lg-flex align-items-center">
+<ul class="navbar-nav ml-auto text-center d-flex flex-md-row">
+<li class="nav-item px-2 m-1">
+<a href="https://vlab.co.in">होम</a>
+</li>
+<li class="nav-item px-2 m-1">
+<a href="https://vlab.co.in/participating-institutes">भागीदार</a>
+</li>
+<li class="nav-item px-2 m-1">
+<a href="https://vlab.co.in/contact-us">संपर्क</a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="container-fluid flex-fill d-flex flex-column vlabs-page-main">
+<div class="row d-flex justify-content-between">
+<div class="flex-column">
+
+<div class="row py-4 px-4 breadcrumbs">
+<a href="http://www.vlab.co.in/broad-area-electronics-and-communications">
+इलेक्ट्रॉनिक्स और संचार इंजीनियरिंग
+</a>
+<span class="mx-2">
+<i aria-hidden="true" class="fa fa-angle-right"></i>
+</span>
+<a href="https://de-iitr.vlabs.ac.in">
+डिजिटल इलेक्ट्रॉनिक्स 1
+</a>
+<span class="mx-2">
+<i aria-hidden="true" class="fa fa-angle-right"></i>
+</span>
+<a href="https://de-iitr.vlabs.ac.in/List of experiments.html">
+प्रयोग
+</a>
+</div>
+
+</div>
+<div class="flex-column">
+<div id="plugin-bug-report"></div>
+<div id="plugin-rating"></div>
+</div>
+</div>
+<div class="row flex-grow-1 d-flex flex-nowrap flex-column flex-lg-row">
+<div class="modal fade popupmenu" id="popupMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">
+<a href="https://vlab.co.in" class="navbar-brand">
+<img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+</a>
+</h5>
+<button type="button" class="btn-close align-self-center" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body nav-menu">
+<div>
+<div class="d-flex nav-menu-body">
+<a href="index.html" class="p-2 ">
+उद्देश्य
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="theory.html" class="p-2  current-item ">
+सिद्धांत
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="pretest.html" class="p-2 ">
+प्रीटेस्ट
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="procedure.html" class="p-2 ">
+कार्यप्रणाली
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="simulation.html" class="p-2 ">
+सिमुलेशन
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="posttest.html" class="p-2 ">
+पोस्टटेस्ट
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="references.html" class="p-2 ">
+सन्दर्भ
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="feedback.html" class="p-2 ">
+प्रतिपुष्टि
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="nav flex-column sidebar nav-menu flex-shrink-0 px-lg-4 align-items-center align-items-lg-start hidden d-none d-lg-flex" id="menu">
+<div>
+<div class="d-flex nav-menu-body">
+<a href="index.html" class="p-2 ">
+उद्देश्य
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="theory.html" class="p-2  current-item ">
+सिद्धांत
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="pretest.html" class="p-2 ">
+प्रीटेस्ट
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="procedure.html" class="p-2 ">
+कार्यप्रणाली
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="simulation.html" class="p-2 ">
+सिमुलेशन
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="posttest.html" class="p-2 ">
+पोस्टटेस्ट
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="references.html" class="p-2 ">
+सन्दर्भ
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex nav-menu-body">
+<a href="feedback.html" class="p-2 ">
+प्रतिपुष्टि
+</a>
+
+</div>
+<div id="t-" class="collapse">
+<div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+</div>
+</div>
+</div>
+</div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+<div class="text-center fix-spacing">
+<h2 id="implementation-and-verification-of-decoderde-multiplexer-and-encoder-using-logic-gates">लॉजिक गेट्स का उपयोग करके डिकोडर/डी-मल्टीप्लेक्सर और एनकोडर का कार्यान्वयन और सत्यापन।</h2>
+
+</div>
+<h3 id="introduction">परिचय</h3>
+<p>N अंकों के बाइनरी कोड का उपयोग 2<sup>N</sup> कोडेड जानकारी के विशिष्ट तत्वों को संग्रहीत करने के लिए किया जा सकता है। एनकोडर्स और डिकोडर्स इसी के लिए उपयुक्त होते है।  एनकोडर्स इनपुट की 2<sup>N</sup> लाइनों को N बिट्स के कोड में परिवर्तित करते हैं और डिकोडर्स N बिट्स को 2<sup>N</sup> लाइनों में डिकोड करते हैं।<br>
+<br></p>
+<h3 id="1-2x4-decoder--de-multiplexer">1) 2x4 डिकोडर/डी-मल्टीप्लेक्सर</h3>
+<p>डेकोडर नाम का अर्थ है एक प्रारूप से दूसरी में कोडेड जानकारी का अनुवाद या डीकोड करना, इसलिए एक डिजिटल डिकोडर डिजिटल इनपुट संकेतों के एक सेट को अपने आउटपुट में समतुल्य डेसीमल कोड में  बदल देता है</p>
+<p>डिकोडर एक कॉम्बिनेशनल सर्किट है जो N इनपुट लाइनों से बाइनरी इनफार्मेशन को अधिकतम  m=2^n विशिष्ट आउटपुट लाइनों में परिवर्तित करता है।<br></p>
+<center><img src="images/1.jpg" style=" height: 200px; width: 350px;"><br></center><br>
+<center><b>चित्र 1. डिकोडर का लॉजिक डायग्राम</b></center><br>
+
+<h4 id="11-2-to-4-binary-decoder">1.1) 2-टू-4 बाइनरी डिकोडर</h4>
+<center><img src="images/2.png" style="height: 250px; width: 300px; "></center><br>
+<center><b>चित्र 2. 2 टू 4 डिकोडर का सर्किट डायग्राम</b></center><br>
+ऊपर चित्रित 2 टू 4 लाइन बाइनरी डिकोडर में चार एंड गेट्स की श्रृंखला होती है। A और B लेबल वाले 2 बाइनरी इनपुट्स को 4 आउटपुट में से एक में डिकोड किया जाता है, इसलिए 2-टू-4 बाइनरी डिकोडर का विवरण।  प्रत्येक आउटपुट 2 इनपुट परिवर्ती संख्या के किसी एक मिनटर्म्स, (प्रत्येक आउटपुट = एक मिनटर्म) का प्रतिनिधित्व करता है।<br>
+<center><img src="images/3.png" style=" height: 400px; width: 350px;"><br></center>
+<center><b>चित्र 3. लॉजिक डायग्राम और 2 टू 4 डिकोडर की ट्रुथ टेबल</b></center><br>
+
+<p>बाइनरी इनपुट A और B निर्धारित करते हैं कि Q0 से Q3 तक कौन सी आउटपुट लाइन लॉजिक लेवल 1 पर "HIGH" है जबकि शेष आउटपुट लॉजिक 0 पर "LOW" माने जाते हैं, ताकि किसी भी समय केवल एक आउटपुट सक्रिय (HIGH) हो सकता है। <br><br></p>
+<p>इसलिए, जो भी आउटपुट लाइन "HIGH" है, इनपुट पर मौजूद बाइनरी कोड की पहचान करती है, दूसरे शब्दों में इस बाइनरी इनपुट को डिकोड करती है। कुछ बाइनरी डिकोडर्स में एक अतिरिक्त इनपुट पिन होती है जिसे लेबल किया जाता है "Enable" जो डिवाइस से आउटपुट को नियंत्रित करती है।  <br><br></p>
+<p>यह अतिरिक्त इनपुट डिकोडर्स आउटपुट को आवश्यकतानुसार "ON" या "OFF" करने की अनुमति देतें हैं।  आउटपुट केवल तभी उत्पन्न होता है जब एनेबल इनपुट का मूल्य 1 होता है; अन्यथा, सभी आउटपुट 0 होते है। कार्यान्वयन में केवल एक छोटे से परिवर्तन की आवश्यकता होती है: एनेबल इनपुट को एंड गेट्स में डाला जाता है जो आउटपुट का निर्माण करते हैं।<br></p>
+<p>यदि एनेबल 0 है, सभी एंड गेट्स को इनपुट में से एक 0 की आपूर्ति की जाती है और इसलिए कोई आउटपुट निर्माण नहीं होता है।  जब एनेबल 1 है, एंड गेट्स को इनपुट में से एक 1 मिलता है, और अब आउटपुट शेष इनपुट पर निर्भर करता है।  इसलिए डिकोडर का आउटपुट इस बात पर निर्भर करता है कि एनेबल उच्च है या कम।</p>
+<h3 id="2-encoder">2) एनकोडर</h3>
+<p>एनकोडर एक कॉम्बीनेशनल सर्किट है जो डिकोडर के विरुद्ध काम करता है। इसमें अधिकतम 2<sup>n</sup> इनपुट लाइनें और ' n ' आउटपुट लाइनें होतीं हैं, इसलिए यह 2<sup>n</sup> इनपुट्स से जानकारी को n-बिट कोड में एनकोड करता है। यह इनपुट के बराबर एक बाइनरी कोड का निर्माण करेगा, जो एक्टिव हाई है।  इसलिए, एनकोडर 2<sup>n</sup> इनपुट लाइनों को ' n ' बिट्स के साथ एनकोड करता है।<br></p>
+<center><img src="images/4.png" style=" height: 250px; width: 250px;"><br>
+<b>चित्र 4. एन्कोडर का लॉजिक डायग्राम</b><br></center>
+
+
+<h4 id="21-4--2-encoder">2.1) 4 : 2 एनकोडर</h4>
+<p>4 टू 2 एनकोडर में चार इनपुट्स Y3, Y2, Y1 और Y0 और दो आउटपुट्स A1 & A0 हितेन हैं।  किसी भी समय, आउटपुट में संबंधित बाइनरी कोड प्राप्त करने के लिए इन 4 इनपुट में से केवल एक ' 1 ' हो सकता है। </p>
+<center><img src="images/5.png" style=" height: 250px; width: 450px;-2%; "><br>
+<center><b>चित्र 5. लॉजिक सिंबॉल और 4 टू 2 एन्कोडर की ट्रुथ टेबल</b><br></center>
+
+
+
+
+
+
+
+
+
+
+</center></div>
+</div>
+</div>
+<footer class="text-light pt-2 vlabs-footer d-flex flex-column">
+<div class="row px-5 mx-0">
+<div class="col d-flex flex-column">
+<span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">कम्युनिटी लिंक्स</span>
+<a href="https://www.sakshat.ac.in/" class="text-light">साक्षात पोर्टल</a>
+<a href="http://outreach.vlabs.ac.in/" class="text-light">आउटरीच पोर्टल</a>
+<a href="https://vlab.co.in/faq" class="text-light">FAQ: वर्चुअल लैब्स</a>
+</div>
+<div class="col d-flex flex-column">
+<span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">हमसे संपर्क करें</span>
+<span> फोन: सामान्य जानकारी: 011-26582050 </span>
+<span> ईमेल: support@vlabs.ac.in </span>
+</div>
+<div class="col d-flex flex-column">
+<span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">हमारा अनुसरण करें</span>
+<div class="social-links">
+<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #55acee;" href="https://twitter.com/TheVirtualLabs">
+<i class="fa fa-twitter"></i>
+</a>
+<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #3b5998;" href="https://www.facebook.com/Virtual-Labs-IIT-Delhi-301510159983871/">
+<i class="fa fa-facebook"></i>
+</a>
+<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #e52d27;" href="https://www.youtube.com/watch?v=asxRaOgk6a0">
+<i class="fa fa-youtube"></i>
+</a>
+<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #2867B2;" href="https://in.linkedin.com/in/virtual-labs-008ba9136">
+<i class="fa fa-linkedin"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="m-0 py-2 text-center" style="font-family: &quot;Open Sans&quot;, sans-serif; background: #212121;">
+<a class="text-primary font-weight-bold" href="https://www.gnu.org/licenses/agpl-3.0.en.html"> AGPL 3.0 </a>
+&nbsp;&amp;&nbsp;
+<a class="text-primary font-weight-bold" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"> क्रिएटिव कॉमन्स (CC BY-NC-SA 4.0) </a>
+</div>
+</footer>
+
+<script src="./assets/js/toggleSidebar.js"></script>
+
+
+
+</body></html>
